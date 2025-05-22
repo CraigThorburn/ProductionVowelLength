@@ -1,0 +1,14 @@
+import os, sys
+
+script_dir=os.getcwd()
+script_path = script_dir+"/dynamic_silence_detector_and_production_extractor.praat"
+pipeline_dir=script_dir+"/../.."
+raw_dir=pipeline_dir+"/input/raw/"
+praat_path = sys.argv[1]
+
+folders=os.listdir(raw_dir)
+
+for i in folders:
+	print(i)
+	arg2 = "/"+ i +"/"
+	os.system(praat_path + " --run " + script_path + " " + pipeline_dir + " " + arg2)
