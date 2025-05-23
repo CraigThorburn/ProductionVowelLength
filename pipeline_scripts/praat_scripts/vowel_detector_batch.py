@@ -1,4 +1,6 @@
-#python3 trim_ltas_batch.python praat /output/ltas_trim_nopitchcorrect_0.075sec /vot/data/out_tg 0 0.075 70 True
+#python vowel_detector_batch.py praat ../../output/vowel_length
+#( will save to folder <arg2>_<technique>_smooth<smoothing>_threshold<threshold>_min<mindur>
+
 import os, sys
 
 script_dir=os.getcwd()
@@ -14,6 +16,9 @@ mindur = 0
 technique = "Amplitude"
 
 output_folder = pipeline_dir + sys.argv[2] + f'_{technique.lower()}_smooth{smoothing}_threshold{threshold}_min{mindur}' #/output/ltas_trim
+
+if not os.path.exists(f'{output_folder}'):
+        os.mkdir(f'{output_folder}')
 
 quiet = sys.argv[3]
 
